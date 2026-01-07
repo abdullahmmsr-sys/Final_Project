@@ -1,0 +1,583 @@
+{
+  "document_metadata": {
+    "title": "NIST Cybersecurity Framework 2.0",
+    "version": "2.0",
+    "year": 2024,
+    "classification": "Public",
+    "issuing_authority": "National Institute of Standards and Technology (NIST)",
+    "country": "United States of America",
+    "language": "English",
+    "previous_version": "1.1"
+  },
+  "executive_summary": {
+    "content": "The NIST Cybersecurity Framework provides a policy framework of computer security guidance.",
+    "key_points": [
+      "Risk-based approach to cybersecurity",
+      "Voluntary guidance for organizations",
+      "Internationally recognized standard"
+    ]
+  },
+  "structure": {
+    "functions": 6,
+    "categories": 19,
+    "subcategories": 95,
+    "total_controls": 95
+  },
+  "functions": [
+    {
+      "function_id": "1",
+      "function_name": "Govern",
+      "function_description": "The organization's cybersecurity risk management strategy, expectations, and policy are established, communicated, and monitored.",
+      "categories": [
+        {
+          "category_id": "1-1",
+          "category_name": "Organizational Context",
+          "objective": "To implement organizational context controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-1-1",
+              "control_text": "The organizational mission is understood and informs cybersecurity risk management"
+            },
+            {
+              "control_id": "1-1-2",
+              "control_text": "Internal and external stakeholders are understood, and their needs and expectations regarding cybersecurity risk management are understood and considered"
+            },
+            {
+              "control_id": "1-1-3",
+              "control_text": "Legal, regulatory, and contractual requirements regarding cybersecurity are understood and managed"
+            },
+            {
+              "control_id": "1-1-4",
+              "control_text": "Critical objectives, capabilities, and services that stakeholders depend on or expect from the organization are understood and communicated"
+            },
+            {
+              "control_id": "1-1-5",
+              "control_text": "Outcomes, capabilities, and services that the organization depends on are understood and communicated"
+            }
+          ]
+        },
+        {
+          "category_id": "1-2",
+          "category_name": "Risk Management Strategy",
+          "objective": "To implement risk management strategy controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-2-1",
+              "control_text": "Risk management objectives are established and agreed to by organizational stakeholders"
+            },
+            {
+              "control_id": "1-2-2",
+              "control_text": "Risk appetite and risk tolerance statements are established, communicated, and maintained"
+            },
+            {
+              "control_id": "1-2-3",
+              "control_text": "Cybersecurity risk management activities and outcomes are included in enterprise risk management processes"
+            },
+            {
+              "control_id": "1-2-4",
+              "control_text": "Strategic direction that describes appropriate risk response options is established and communicated"
+            },
+            {
+              "control_id": "1-2-5",
+              "control_text": "Lines of communication across the organization are established for cybersecurity risks"
+            },
+            {
+              "control_id": "1-2-6",
+              "control_text": "A standardized method for calculating, documenting, categorizing, and prioritizing cybersecurity risks is established and communicated"
+            },
+            {
+              "control_id": "1-2-7",
+              "control_text": "Strategic opportunities (i.e., positive risks) are identified and communicated"
+            }
+          ]
+        },
+        {
+          "category_id": "1-3",
+          "category_name": "Roles, Responsibilities, and Authorities",
+          "objective": "To implement roles, responsibilities, and authorities controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-3-1",
+              "control_text": "Cybersecurity roles, responsibilities, and authorities are established, communicated, understood, and enforced"
+            },
+            {
+              "control_id": "1-3-2",
+              "control_text": "Roles, responsibilities, and authorities related to cybersecurity risk management are coordinated across the organization"
+            },
+            {
+              "control_id": "1-3-3",
+              "control_text": "Adequate resources are allocated commensurate with cybersecurity risk"
+            },
+            {
+              "control_id": "1-3-4",
+              "control_text": "Cybersecurity roles and responsibilities for suppliers and third-party partners are established, communicated, and coordinated"
+            }
+          ]
+        },
+        {
+          "category_id": "1-4",
+          "category_name": "Policy",
+          "objective": "To implement policy controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-4-1",
+              "control_text": "Policy for managing cybersecurity risks is established based on organizational context, cybersecurity strategy, and priorities and is communicated and enforced"
+            },
+            {
+              "control_id": "1-4-2",
+              "control_text": "Policy for managing cybersecurity risks is reviewed, updated, communicated, and enforced to reflect changes in requirements, threats, technology, and organizational mission"
+            }
+          ]
+        },
+        {
+          "category_id": "1-5",
+          "category_name": "Oversight",
+          "objective": "To implement oversight controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-5-1",
+              "control_text": "Cybersecurity risk management strategy outcomes are reviewed to inform and adjust strategy and direction"
+            },
+            {
+              "control_id": "1-5-2",
+              "control_text": "The cybersecurity risk management strategy is reviewed and adjusted to ensure coverage of organizational requirements and risks"
+            },
+            {
+              "control_id": "1-5-3",
+              "control_text": "Organizational cybersecurity risk management performance is evaluated and reviewed for adjustments needed"
+            }
+          ]
+        },
+        {
+          "category_id": "1-6",
+          "category_name": "Cybersecurity Supply Chain Risk Management",
+          "objective": "To implement cybersecurity supply chain risk management controls as part of the Govern function",
+          "controls": [
+            {
+              "control_id": "1-6-1",
+              "control_text": "A cybersecurity supply chain risk management strategy is established, communicated, and enforced"
+            },
+            {
+              "control_id": "1-6-2",
+              "control_text": "Cybersecurity supply chain risk management objectives are identified and integrated into broader risk management strategy"
+            },
+            {
+              "control_id": "1-6-3",
+              "control_text": "Cybersecurity supply chain risk management requirements are integrated into contracts"
+            },
+            {
+              "control_id": "1-6-4",
+              "control_text": "Suppliers are known and prioritized by criticality"
+            },
+            {
+              "control_id": "1-6-5",
+              "control_text": "Requirements to address cybersecurity risks in supply chains are established, communicated, and enforced"
+            },
+            {
+              "control_id": "1-6-6",
+              "control_text": "Planning and due diligence are performed to reduce risks before entering into formal agreements with suppliers"
+            },
+            {
+              "control_id": "1-6-7",
+              "control_text": "The risks posed by a supplier are assessed prior to acquisition"
+            },
+            {
+              "control_id": "1-6-8",
+              "control_text": "Relevant suppliers are included in incident planning, response, and recovery activities"
+            },
+            {
+              "control_id": "1-6-9",
+              "control_text": "Supply chain security practices are integrated into cybersecurity and enterprise risk management programs"
+            },
+            {
+              "control_id": "1-6-10",
+              "control_text": "Cybersecurity supply chain risk management plans include provisions for activities that occur after the conclusion of a partnership or service agreement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "function_id": "2",
+      "function_name": "Identify",
+      "function_description": "The organization's current cybersecurity risks are understood.",
+      "categories": [
+        {
+          "category_id": "2-1",
+          "category_name": "Asset Management",
+          "objective": "To implement asset management controls as part of the Identify function",
+          "controls": [
+            {
+              "control_id": "2-1-1",
+              "control_text": "Inventories of hardware managed by the organization are maintained"
+            },
+            {
+              "control_id": "2-1-2",
+              "control_text": "Inventories of software, services, and systems managed by the organization are maintained"
+            },
+            {
+              "control_id": "2-1-3",
+              "control_text": "Representations of the organization's authorized network communication and internal and external network data flows are maintained"
+            },
+            {
+              "control_id": "2-1-4",
+              "control_text": "Inventories of services provided by suppliers are maintained"
+            },
+            {
+              "control_id": "2-1-5",
+              "control_text": "Assets are prioritized based on classification, criticality, and business value"
+            },
+            {
+              "control_id": "2-1-6",
+              "control_text": "Inventories of data and corresponding metadata for designated data types are maintained"
+            },
+            {
+              "control_id": "2-1-7",
+              "control_text": "Systems, hardware, software, services, and data are managed throughout their life cycles"
+            }
+          ]
+        },
+        {
+          "category_id": "2-2",
+          "category_name": "Risk Assessment",
+          "objective": "To implement risk assessment controls as part of the Identify function",
+          "controls": [
+            {
+              "control_id": "2-2-1",
+              "control_text": "Vulnerabilities in assets are identified, validated, and recorded"
+            },
+            {
+              "control_id": "2-2-2",
+              "control_text": "Cyber threat intelligence is received from information sharing forums and sources"
+            },
+            {
+              "control_id": "2-2-3",
+              "control_text": "Internal and external threats to the organization are identified and recorded"
+            },
+            {
+              "control_id": "2-2-4",
+              "control_text": "Potential impacts and likelihoods of threats exploiting vulnerabilities are identified and recorded"
+            },
+            {
+              "control_id": "2-2-5",
+              "control_text": "Threats, vulnerabilities, likelihoods, and impacts are used to understand inherent risk and inform risk response decisions"
+            },
+            {
+              "control_id": "2-2-6",
+              "control_text": "Risk responses are chosen, prioritized, planned, tracked, and communicated"
+            },
+            {
+              "control_id": "2-2-7",
+              "control_text": "Changes and exceptions are managed, assessed for risk impact, recorded, and tracked"
+            },
+            {
+              "control_id": "2-2-8",
+              "control_text": "Processes for receiving, analyzing, and responding to vulnerability disclosures are established"
+            },
+            {
+              "control_id": "2-2-9",
+              "control_text": "The authenticity and integrity of hardware and software are assessed prior to acquisition and use"
+            },
+            {
+              "control_id": "2-2-10",
+              "control_text": "Critical suppliers are assessed prior to acquisition"
+            }
+          ]
+        },
+        {
+          "category_id": "2-3",
+          "category_name": "Improvement",
+          "objective": "To implement improvement controls as part of the Identify function",
+          "controls": [
+            {
+              "control_id": "2-3-1",
+              "control_text": "Improvements are identified from evaluations"
+            },
+            {
+              "control_id": "2-3-2",
+              "control_text": "Improvements are identified from security tests and exercises"
+            },
+            {
+              "control_id": "2-3-3",
+              "control_text": "Improvements are identified from execution of operational processes, procedures, and activities"
+            },
+            {
+              "control_id": "2-3-4",
+              "control_text": "Incident response plans and other cybersecurity plans that affect operations are established, communicated, and maintained"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "function_id": "3",
+      "function_name": "Protect",
+      "function_description": "Safeguards to manage the organization's cybersecurity risks are used.",
+      "categories": [
+        {
+          "category_id": "3-1",
+          "category_name": "Identity Management, Authentication, and Access Control",
+          "objective": "To implement identity management, authentication, and access control controls as part of the Protect function",
+          "controls": [
+            {
+              "control_id": "3-1-1",
+              "control_text": "Identities and credentials for authorized users are issued, managed, verified, revoked, and audited"
+            },
+            {
+              "control_id": "3-1-2",
+              "control_text": "Identities and credentials for machine and software identities are issued, managed, verified, revoked, and audited"
+            },
+            {
+              "control_id": "3-1-3",
+              "control_text": "Users, services, and hardware are authenticated"
+            },
+            {
+              "control_id": "3-1-4",
+              "control_text": "Identity assertions are protected, conveyed, and verified"
+            },
+            {
+              "control_id": "3-1-5",
+              "control_text": "Access permissions, entitlements, and authorizations are defined in a policy, managed, enforced, and reviewed"
+            },
+            {
+              "control_id": "3-1-6",
+              "control_text": "Physical access to assets is managed, monitored, and enforced"
+            }
+          ]
+        },
+        {
+          "category_id": "3-2",
+          "category_name": "Awareness and Training",
+          "objective": "To implement awareness and training controls as part of the Protect function",
+          "controls": [
+            {
+              "control_id": "3-2-1",
+              "control_text": "Personnel are provided with cybersecurity awareness and training"
+            },
+            {
+              "control_id": "3-2-2",
+              "control_text": "Individuals in specialized roles are provided with role-specific cybersecurity awareness and training"
+            }
+          ]
+        },
+        {
+          "category_id": "3-3",
+          "category_name": "Data Security",
+          "objective": "To implement data security controls as part of the Protect function",
+          "controls": [
+            {
+              "control_id": "3-3-1",
+              "control_text": "The confidentiality, integrity, and availability of data-at-rest are protected"
+            },
+            {
+              "control_id": "3-3-2",
+              "control_text": "The confidentiality, integrity, and availability of data-in-transit are protected"
+            },
+            {
+              "control_id": "3-3-3",
+              "control_text": "The confidentiality, integrity, and availability of data-in-use are protected"
+            },
+            {
+              "control_id": "3-3-4",
+              "control_text": "Backups of data are created, protected, maintained, and tested"
+            }
+          ]
+        },
+        {
+          "category_id": "3-4",
+          "category_name": "Platform Security",
+          "objective": "To implement platform security controls as part of the Protect function",
+          "controls": [
+            {
+              "control_id": "3-4-1",
+              "control_text": "Configuration management practices are established and applied"
+            },
+            {
+              "control_id": "3-4-2",
+              "control_text": "Software is maintained, replaced, and removed commensurate with risk"
+            },
+            {
+              "control_id": "3-4-3",
+              "control_text": "Log records are generated and made available for continuous monitoring"
+            },
+            {
+              "control_id": "3-4-4",
+              "control_text": "Secure software development practices are integrated and their performance is monitored throughout the software development life cycle"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "function_id": "4",
+      "function_name": "Detect",
+      "function_description": "Possible cybersecurity attacks and compromises are found and analyzed.",
+      "categories": [
+        {
+          "category_id": "4-1",
+          "category_name": "Adverse Event Analysis",
+          "objective": "To implement adverse event analysis controls as part of the Detect function",
+          "controls": [
+            {
+              "control_id": "4-1-1",
+              "control_text": "Potentially adverse events are analyzed to better understand associated activities"
+            },
+            {
+              "control_id": "4-1-2",
+              "control_text": "Information is correlated from multiple sources"
+            },
+            {
+              "control_id": "4-1-3",
+              "control_text": "The estimated impact and scope of adverse events are understood"
+            },
+            {
+              "control_id": "4-1-4",
+              "control_text": "Information on adverse events is provided to authorized staff and tools"
+            },
+            {
+              "control_id": "4-1-5",
+              "control_text": "Cyber threat intelligence and other contextual information are integrated into the analysis"
+            },
+            {
+              "control_id": "4-1-6",
+              "control_text": "Incidents are declared when adverse events meet the defined incident criteria"
+            }
+          ]
+        },
+        {
+          "category_id": "4-2",
+          "category_name": "Continuous Monitoring",
+          "objective": "To implement continuous monitoring controls as part of the Detect function",
+          "controls": [
+            {
+              "control_id": "4-2-1",
+              "control_text": "Networks and network services are monitored to find potentially adverse events"
+            },
+            {
+              "control_id": "4-2-2",
+              "control_text": "The physical environment is monitored to find potentially adverse events"
+            },
+            {
+              "control_id": "4-2-3",
+              "control_text": "Personnel activity and technology usage are monitored to find potentially adverse events"
+            },
+            {
+              "control_id": "4-2-4",
+              "control_text": "External service provider activities and services are monitored to find potentially adverse events"
+            },
+            {
+              "control_id": "4-2-5",
+              "control_text": "Computing hardware and software, runtime environments, and their data are monitored to find potentially adverse events"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "function_id": "5",
+      "function_name": "Respond",
+      "function_description": "Actions regarding a detected cybersecurity incident are taken.",
+      "categories": [
+        {
+          "category_id": "5-1",
+          "category_name": "Incident Management",
+          "objective": "To implement incident management controls as part of the Respond function",
+          "controls": [
+            {
+              "control_id": "5-1-1",
+              "control_text": "The incident response plan is executed in coordination with relevant third parties once an incident is declared"
+            },
+            {
+              "control_id": "5-1-2",
+              "control_text": "Incident reports are triaged and validated"
+            },
+            {
+              "control_id": "5-1-3",
+              "control_text": "Incidents are categorized and prioritized"
+            },
+            {
+              "control_id": "5-1-4",
+              "control_text": "Incidents are escalated or elevated as needed"
+            },
+            {
+              "control_id": "5-1-5",
+              "control_text": "The criteria for initiating incident recovery are applied"
+            }
+          ]
+        },
+        {
+          "category_id": "5-2",
+          "category_name": "Incident Analysis",
+          "objective": "To implement incident analysis controls as part of the Respond function",
+          "controls": [
+            {
+              "control_id": "5-2-1",
+              "control_text": "Analysis is performed to establish what has taken place during an incident and the root cause of the incident"
+            },
+            {
+              "control_id": "5-2-2",
+              "control_text": "Actions performed during an investigation are recorded, and the records' integrity and provenance are preserved"
+            },
+            {
+              "control_id": "5-2-3",
+              "control_text": "Incident data and metadata are collected, and their integrity and provenance are preserved"
+            },
+            {
+              "control_id": "5-2-4",
+              "control_text": "An incident's magnitude is estimated and validated"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "function_id": "6",
+      "function_name": "Recover",
+      "function_description": "Assets and operations affected by a cybersecurity incident are restored.",
+      "categories": [
+        {
+          "category_id": "6-1",
+          "category_name": "Incident Recovery Plan Execution",
+          "objective": "To implement incident recovery plan execution controls as part of the Recover function",
+          "controls": [
+            {
+              "control_id": "6-1-1",
+              "control_text": "The recovery portion of the incident response plan is executed once initiated from the incident response process"
+            },
+            {
+              "control_id": "6-1-2",
+              "control_text": "Recovery actions are selected, scoped, prioritized, and performed"
+            },
+            {
+              "control_id": "6-1-3",
+              "control_text": "The integrity of backups and other restoration assets is verified before using them for restoration"
+            },
+            {
+              "control_id": "6-1-4",
+              "control_text": "The integrity of restored assets is verified, systems and services are restored, and normal operating status is confirmed"
+            },
+            {
+              "control_id": "6-1-5",
+              "control_text": "The end of recovery operations and a return to normal operations are declared based on criteria, and incident-related documentation is completed"
+            }
+          ]
+        },
+        {
+          "category_id": "6-2",
+          "category_name": "Incident Recovery Communication",
+          "objective": "To implement incident recovery communication controls as part of the Recover function",
+          "controls": [
+            {
+              "control_id": "6-2-1",
+              "control_text": "Recovery activities and progress in restoring operational capabilities are communicated to designated internal and external stakeholders"
+            },
+            {
+              "control_id": "6-2-2",
+              "control_text": "Public updates on incident recovery are shared using approved methods and messaging"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+    "organization_metadata": {
+        "organization_name": "QuickStart Apps",
+        "organization_id": "ORG-QSA-003",
+        "country": "Saudi Arabia",
+        "industry": "Technology",
+        "size": "Small",
+        "policy_version": "0.1",
+        "effective_date": "2024-01-01",
+        "language": "English",
+        "compliance_targets": [
+            "Best Practices"
+        ]
+    },
+    "policy_sections": [
+        {
+            "section_name": "General IT Rules",
+            "section_id": "SEC-GEN",
+            "statements": [
+                {
+                    "statement_id": "GEN-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Do not share your password with anyone outside the company.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Password Sharing"
+                    ]
+                },
+                {
+                    "statement_id": "GEN-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Try to lock your computer when you step away from your desk.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Locking"
+                    ]
+                },
+                {
+                    "statement_id": "GEN-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "If you see a virus, tell the manager.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Reporting"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Data Handling",
+            "section_id": "SEC-DAT",
+            "statements": [
+                {
+                    "statement_id": "DAT-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Customer data is private and should be handled with care.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Privacy"
+                    ]
+                },
+                {
+                    "statement_id": "DAT-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "We store files on the cloud drive for safekeeping.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Cloud Storage"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Internet Usage",
+            "section_id": "SEC-AUP",
+            "statements": [
+                {
+                    "statement_id": "AUP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Please limit personal browsing during work hours.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Personal Use"
+                    ]
+                },
+                {
+                    "statement_id": "AUP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Downloading illegal movies or music is forbidden.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Illegal Content"
+                    ]
+                }
+            ]
+        }
+    ]
+}

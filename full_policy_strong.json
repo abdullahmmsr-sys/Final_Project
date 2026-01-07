@@ -1,0 +1,612 @@
+{
+    "organization_metadata": {
+        "organization_name": "SecureTech Saudi Solutions",
+        "organization_id": "ORG-STS-001",
+        "country": "Saudi Arabia",
+        "industry": "Technology",
+        "size": "Large",
+        "policy_version": "3.0",
+        "effective_date": "2025-01-10",
+        "language": "English",
+        "compliance_targets": [
+            "NCA ECC-2:2024",
+            "NIST CSF 2.0"
+        ]
+    },
+    "policy_sections": [
+        {
+            "section_name": "Information Security Policy",
+            "section_id": "SEC-ISP",
+            "statements": [
+                {
+                    "statement_id": "ISP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "The CISO is responsible for maintaining a cybersecurity strategy that supports business goals and regulatory mandates.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Strategy",
+                        "Governance"
+                    ]
+                },
+                {
+                    "statement_id": "ISP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "This framework applies to all personnel, systems, and vendors processing corporate data.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Scope",
+                        "Applicability"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Access Control Policy",
+            "section_id": "SEC-ACC",
+            "statements": [
+                {
+                    "statement_id": "ACC-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Access rights are granted strictly on a need-to-know basis and must be approved by the data owner.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Need-to-Know",
+                        "Approval"
+                    ]
+                },
+                {
+                    "statement_id": "ACC-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Multi-Factor Authentication (MFA) is required for all remote connections and administrative access.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "MFA",
+                        "Remote Access"
+                    ]
+                },
+                {
+                    "statement_id": "ACC-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "User access reviews must be conducted quarterly; revoked access must be processed within 24 hours of termination.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Review",
+                        "Termination"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Password Policy",
+            "section_id": "SEC-PWD",
+            "statements": [
+                {
+                    "statement_id": "PWD-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Passwords must be a minimum of 14 characters, containing mixed case, numbers, and symbols.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Length",
+                        "Complexity"
+                    ]
+                },
+                {
+                    "statement_id": "PWD-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Password history is enforced to prevent reuse of the last 12 passwords.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "History",
+                        "Reuse"
+                    ]
+                },
+                {
+                    "statement_id": "PWD-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Accounts will be locked out after 5 failed login attempts for a duration of 30 minutes.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Lockout",
+                        "Brute Force"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Incident Response Policy",
+            "section_id": "SEC-IRP",
+            "statements": [
+                {
+                    "statement_id": "IRP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "An Incident Response Team (IRT) must be available 24/7 to handle security events.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "IRT",
+                        "Availability"
+                    ]
+                },
+                {
+                    "statement_id": "IRP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Major incidents affecting critical infrastructure must be reported to national authorities within legally defined windows.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Reporting",
+                        "Authorities"
+                    ]
+                },
+                {
+                    "statement_id": "IRP-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Forensic evidence must be preserved according to chain-of-custody procedures during investigations.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Forensics",
+                        "Chain of Custody"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Data Classification Policy",
+            "section_id": "SEC-DCP",
+            "statements": [
+                {
+                    "statement_id": "DCP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Data must be labeled as Public, Internal, Confidential, or Restricted based on sensitivity.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Labeling",
+                        "Sensitivity"
+                    ]
+                },
+                {
+                    "statement_id": "DCP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Confidential and Restricted data must be encrypted when stored and during transmission.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Encryption",
+                        "Handling"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Risk Management Policy",
+            "section_id": "SEC-RMP",
+            "statements": [
+                {
+                    "statement_id": "RMP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "A formal risk assessment methodology must be used to identify threats annually.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Methodology",
+                        "Assessment"
+                    ]
+                },
+                {
+                    "statement_id": "RMP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Risk treatment plans are required for all risks exceeding the organization's risk appetite.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Risk Treatment",
+                        "Appetite"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Network Security Policy",
+            "section_id": "SEC-NSP",
+            "statements": [
+                {
+                    "statement_id": "NSP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "The network must be segmented into zones (DMZ, User, Data, Management) with strict firewall rules between them.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Segmentation",
+                        "Zones"
+                    ]
+                },
+                {
+                    "statement_id": "NSP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Direct connections from the internet to internal databases are strictly prohibited.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Database",
+                        "Internet Exposure"
+                    ]
+                },
+                {
+                    "statement_id": "NSP-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Wireless networks must use WPA3 Enterprise and be isolated from the production LAN.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Wireless",
+                        "WPA3"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Backup and Recovery Policy",
+            "section_id": "SEC-BRP",
+            "statements": [
+                {
+                    "statement_id": "BRP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Critical data requires daily incremental backups and weekly full backups.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Schedule",
+                        "Frequency"
+                    ]
+                },
+                {
+                    "statement_id": "BRP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "One backup copy must be stored off-site or in an immutable cloud storage bucket to prevent ransomware encryption.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Immutable",
+                        "Off-site"
+                    ]
+                },
+                {
+                    "statement_id": "BRP-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Recovery drills must be performed monthly to validate RTO and RPO targets.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Drills",
+                        "RTO/RPO"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Security Monitoring Policy",
+            "section_id": "SEC-SMP",
+            "statements": [
+                {
+                    "statement_id": "SMP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "A centralized SIEM must collect logs from all servers, firewalls, and critical applications.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "SIEM",
+                        "Centralized"
+                    ]
+                },
+                {
+                    "statement_id": "SMP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Alerts for high-priority security events must be investigated immediately by the SOC.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "SOC",
+                        "Alerts"
+                    ]
+                },
+                {
+                    "statement_id": "SMP-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Logs must be retained for a minimum of 12 months to support historical analysis.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Retention",
+                        "Logs"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Encryption Policy",
+            "section_id": "SEC-ENC",
+            "statements": [
+                {
+                    "statement_id": "ENC-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "AES-256 encryption is the standard for data at rest.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "AES-256",
+                        "At Rest"
+                    ]
+                },
+                {
+                    "statement_id": "ENC-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "TLS 1.2 or higher is mandatory for all web-based communications; weak ciphers must be disabled.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "TLS",
+                        "In Transit"
+                    ]
+                },
+                {
+                    "statement_id": "ENC-ST-003",
+                    "statement_number": "1.3",
+                    "statement_text": "Encryption keys must be rotated annually and managed in a hardware security module (HSM) or secure KMS.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Key Management",
+                        "Rotation"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Third-Party Risk Policy",
+            "section_id": "SEC-TPR",
+            "statements": [
+                {
+                    "statement_id": "TPR-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "All vendors must undergo a security assessment before contract signing.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Vendor Assessment",
+                        "Due Diligence"
+                    ]
+                },
+                {
+                    "statement_id": "TPR-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Contracts must include right-to-audit clauses and data breach notification requirements.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Contract",
+                        "Audit Rights"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Cloud Security Policy",
+            "section_id": "SEC-CSP",
+            "statements": [
+                {
+                    "statement_id": "CSP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Cloud resources must be configured according to the CIS Benchmark standards.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Configuration",
+                        "Benchmarks"
+                    ]
+                },
+                {
+                    "statement_id": "CSP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Multi-tenancy risks must be evaluated before hosting sensitive data in public clouds.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Multi-tenancy",
+                        "Public Cloud"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Acceptable Use Policy",
+            "section_id": "SEC-AUP",
+            "statements": [
+                {
+                    "statement_id": "AUP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Corporate devices are for business use; accessing illegal or malicious content is grounds for termination.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Business Use",
+                        "Prohibited Content"
+                    ]
+                },
+                {
+                    "statement_id": "AUP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Users must not bypass security controls or install unauthorized software.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Shadow IT",
+                        "Bypass"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Vulnerability Management",
+            "section_id": "SEC-VMP",
+            "statements": [
+                {
+                    "statement_id": "VMP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Automated vulnerability scans must run weekly on external IPs and monthly on internal assets.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Scanning",
+                        "Frequency"
+                    ]
+                },
+                {
+                    "statement_id": "VMP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Critical vulnerabilities must be patched within 48 hours of discovery.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Patching",
+                        "SLA"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Physical Security Policy",
+            "section_id": "SEC-PHY",
+            "statements": [
+                {
+                    "statement_id": "PHY-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Data centers must be protected by biometric access controls and 24/7 video surveillance.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Biometrics",
+                        "CCTV"
+                    ]
+                },
+                {
+                    "statement_id": "PHY-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Visitors must be escorted at all times and sign a non-disclosure agreement.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Visitors",
+                        "Escort"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Change Management Policy",
+            "section_id": "SEC-CMP",
+            "statements": [
+                {
+                    "statement_id": "CMP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "All changes to production systems require peer review and CAB (Change Advisory Board) approval.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "CAB",
+                        "Approval"
+                    ]
+                },
+                {
+                    "statement_id": "CMP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "A rollback plan must be documented and tested before any major change implementation.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Rollback",
+                        "Testing"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Security Awareness Policy",
+            "section_id": "SEC-SAP",
+            "statements": [
+                {
+                    "statement_id": "SAP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Phishing simulation tests will be conducted monthly; repeat failers must undergo remedial training.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Phishing",
+                        "Training"
+                    ]
+                },
+                {
+                    "statement_id": "SAP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "All employees must complete security awareness modules upon hire and annually thereafter.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Onboarding",
+                        "Annual"
+                    ]
+                }
+            ]
+        }
+    ]
+}

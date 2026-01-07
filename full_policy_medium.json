@@ -1,0 +1,266 @@
+{
+    "organization_metadata": {
+        "organization_name": "FactoryLine Manufacturing",
+        "organization_id": "ORG-FLM-002",
+        "country": "Saudi Arabia",
+        "industry": "Manufacturing",
+        "size": "Medium",
+        "policy_version": "1.0",
+        "effective_date": "2024-06-15",
+        "language": "English",
+        "compliance_targets": [
+            "NCA ECC-2:2024"
+        ]
+    },
+    "policy_sections": [
+        {
+            "section_name": "Access Control",
+            "section_id": "SEC-ACC",
+            "statements": [
+                {
+                    "statement_id": "ACC-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Users should only be given access to files they need for their job.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Access",
+                        "Job Need"
+                    ]
+                },
+                {
+                    "statement_id": "ACC-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "VPN is required for working from outside the office.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "VPN",
+                        "Remote"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Password Standards",
+            "section_id": "SEC-PWD",
+            "statements": [
+                {
+                    "statement_id": "PWD-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Passwords should be strong and hard to guess.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Strong Password"
+                    ]
+                },
+                {
+                    "statement_id": "PWD-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Passwords must be changed every 3 months.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Rotation"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Incident Handling",
+            "section_id": "SEC-IRP",
+            "statements": [
+                {
+                    "statement_id": "IRP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Employees must report strange computer behavior to IT immediately.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Reporting",
+                        "IT"
+                    ]
+                },
+                {
+                    "statement_id": "IRP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "IT will track security incidents in a log file.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Logging"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Data Security",
+            "section_id": "SEC-DAT",
+            "statements": [
+                {
+                    "statement_id": "DAT-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Sensitive company files should be kept confidential.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Confidentiality"
+                    ]
+                },
+                {
+                    "statement_id": "DAT-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Important documents should be encrypted if sent via email.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Encryption",
+                        "Email"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Network & Monitoring",
+            "section_id": "SEC-NET",
+            "statements": [
+                {
+                    "statement_id": "NET-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "We use firewalls to protect the office network.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Firewall"
+                    ]
+                },
+                {
+                    "statement_id": "NET-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Antivirus logs are checked regularly by the IT team.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Antivirus",
+                        "Monitoring"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Backups",
+            "section_id": "SEC-BRP",
+            "statements": [
+                {
+                    "statement_id": "BRP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Servers are backed up automatically every night.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Backup",
+                        "Daily"
+                    ]
+                },
+                {
+                    "statement_id": "BRP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Backups should be checked occasionally to ensure they work.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Testing"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Acceptable Use",
+            "section_id": "SEC-AUP",
+            "statements": [
+                {
+                    "statement_id": "AUP-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Company computers are for work purposes only.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Work Use"
+                    ]
+                },
+                {
+                    "statement_id": "AUP-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Employees cannot install games or unauthorized software.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Software"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Physical Security",
+            "section_id": "SEC-PHY",
+            "statements": [
+                {
+                    "statement_id": "PHY-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "The server room must remain locked when not in use.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Locks",
+                        "Server Room"
+                    ]
+                },
+                {
+                    "statement_id": "PHY-ST-002",
+                    "statement_number": "1.2",
+                    "statement_text": "Guests should check in at the front desk.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Guests"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_name": "Third-Party Access",
+            "section_id": "SEC-TPR",
+            "statements": [
+                {
+                    "statement_id": "TPR-ST-001",
+                    "statement_number": "1.1",
+                    "statement_text": "Contractors need approval before accessing our network.",
+                    "statement_type": "mandatory",
+                    "implementation_status": "implemented",
+                    "responsible_role": "CISO / IT Security",
+                    "keywords": [
+                        "Approval",
+                        "Contractors"
+                    ]
+                }
+            ]
+        }
+    ]
+}
