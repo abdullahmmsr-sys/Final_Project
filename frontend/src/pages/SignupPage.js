@@ -218,7 +218,6 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="confirmPassword">{t('confirmPassword')}</label>
             <div className="input-wrapper">
-              <span className="input-icon"></span>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="confirmPassword"
