@@ -29,27 +29,38 @@ class VectorStoreManager:
         if self._loaded:
             return
         
-        print("Loading embedding model...")
-        # IMPORTANT: Must use the same model that was used to create the embeddings!
-        self.embedding_model = SentenceTransformer('BAAI/bge-m3')
+        print("Loading FAISS indexes and chunks...")
         
         for framework, index_path in FAISS_INDEXES.items():
             if Path(index_path).exists():
                 print(f"Loading {framework} index...")
-                self.indexes[framework] = faiss.read_index(str(index_path))
-                
-                # Load chunks
-                chunks_path = CHUNKS_FILES.get(framework)
-                if chunks_path and Path(chunks_path).exists():
-                    self.chunks[framework] = self._load_chunks(chunks_path)
-                
-                # Load embeddings
-                embeddings_path = EMBEDDINGS_FILES.get(framework)
-                if embeddings_path and Path(embeddings_path).exists():
-                    self.embeddings[framework] = np.load(str(embeddings_path))
+                try:
+                    self.indexes[framework] = faiss.read_index(str(index_path))
+                    
+                    # Load chunks
+                    chunks_path = CHUNKS_FILES.get(framework)
+                    if chunks_path and Path(chunks_path).exists():
+                        self.chunks[framework] = self._load_chunks(chunks_path)
+                    
+                    # Load embeddings
+                    embeddings_path = EMBEDDINGS_FILES.get(framework)
+                    if embeddings_path and Path(embeddings_path).exists():
+                        self.embeddings[framework] = np.load(str(embeddings_path))
+                except Exception as e:
+                    print(f"Warning: Failed to load {framework}: {e}")
+            else:
+                print(f"Warning: Index file not found: {index_path}")
         
         self._loaded = True
         print(f"Loaded {len(self.indexes)} vector stores")
+    
+    def _load_embedding_model(self):
+        """Lazy load the embedding model only when needed"""
+        if self.embedding_model is None:
+            print("Loading embedding model (this may take a moment)...")
+            self.embedding_model = SentenceTransformer('BAAI/bge-m3')
+            print("Embedding model loaded!")
+        return self.embedding_model
     
     def _load_chunks(self, path: Path) -> List[Dict]:
         """Load chunks from JSONL file"""
@@ -91,8 +102,9 @@ class VectorStoreManager:
         
         top_k = top_k or RAG_CONFIG["top_k"]
         
-        # Encode query
-        query_embedding = self.embedding_model.encode([query], convert_to_numpy=True)
+        # Encode query - use lazy loaded embedding model
+        model = self._load_embedding_model()
+        query_embedding = model.encode([query], convert_to_numpy=True)
         
         # Search FAISS index
         distances, indices = self.indexes[framework].search(
