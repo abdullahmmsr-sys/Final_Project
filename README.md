@@ -1,2 +1,472 @@
-# Final_Project
-Final project at Tuwaiq academy
+# 🛡️ Compliance Checker
+
+<p align="center">
+  <img src="frontend/public/logo.png" alt="Compliance Checker Logo" width="200"/>
+</p>
+
+<p align="center">
+  <strong>AI-Powered Compliance Analysis System for NCA and NIST Frameworks</strong>
+</p>
+
+<p align="center">
+  Final Project at Tuwaiq Academy
+</p>
+
+---
+
+## 📋 Overview
+
+A sophisticated RAG (Retrieval-Augmented Generation) based compliance checking system that analyzes company policies and compliance documents against internationally recognized cybersecurity frameworks:
+
+- **NCA ECC** (National Cybersecurity Authority Essential Cybersecurity Controls) - Saudi Arabia 🇸🇦
+  - English version
+  - Arabic version (الضوابط الأساسية للأمن السيبراني)
+- **NIST CSF** (Cybersecurity Framework) - USA 🇺🇸
+
+### ✨ Key Features
+
+- **Multi-Layer LLM Evaluation**: Uses 3-layer Groq LLM architecture for accurate analysis
+  - Layer 1: Fast initial relevance check (llama-3.1-8b-instant)
+  - Layer 2: Detailed compliance analysis (llama-3.1-70b-versatile)
+  - Layer 3: Final scoring and recommendations (llama-3.3-70b-specdec)
+  
+- **Percentage-Based Scoring**: Each control receives a 0-100% compliance score
+- **Interactive UI**: Dynamic React frontend with clickable controls showing detailed analysis
+- **Bilingual Support**: Full Arabic and English interface with RTL support
+- **User Authentication**: Secure login/signup with Supabase
+- **Report Management**: Save, view, compare, and export compliance reports
+- **AI Chatbot**: Interactive improvement advisor for compliance guidance
+- **Policy Templates**: Ready-to-use security policy templates
+- **Actionable Recommendations**: Priority-ranked suggestions for improvement
+- **Multi-Framework Support**: Analyze against multiple frameworks simultaneously
+
+---
+
+## 🏗️ System Architecture
+
+### High-Level Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           CLIENT LAYER                                       │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    React Frontend (SPA)                              │    │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐  │    │
+│  │  │ Landing  │ │Compliance│ │  Policy  │ │Improvement│ │Dashboard │  │    │
+│  │  │  Pages   │ │ Checker  │ │Templates │ │  Advisor  │ │& Reports │  │    │
+│  │  │ (EN/AR)  │ │          │ │          │ │ (Chatbot) │ │          │  │    │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘  │    │
+│  │                                                                      │    │
+│  │  ┌──────────────────────────────────────────────────────────────┐   │    │
+│  │  │  Context Providers: AuthContext | LanguageContext (i18n)     │   │    │
+│  │  └──────────────────────────────────────────────────────────────┘   │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         BACKEND API LAYER                                    │
+│  ┌─────────────────────────────────────────────────────────────────────┐    │
+│  │                    FastAPI Application                               │    │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌──────────────────────────┐  │    │
+│  │  │   Document   │  │  Compliance  │  │     Chatbot API         │  │    │
+│  │  │   Upload     │  │  Evaluation  │  │   (Streaming SSE)       │  │    │
+│  │  │   Endpoint   │  │   Endpoints  │  │                          │  │    │
+│  │  └──────────────┘  └──────────────┘  └──────────────────────────┘  │    │
+│  └─────────────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────────────┘
+                                    │
+                    ┌───────────────┼───────────────┐
+                    ▼               ▼               ▼
+┌──────────────────────┐ ┌──────────────────┐ ┌────────────────────────┐
+│   PROCESSING LAYER   │ │   VECTOR LAYER   │ │   EVALUATION LAYER     │
+│  ┌────────────────┐  │ │  ┌────────────┐  │ │  ┌──────────────────┐  │
+│  │   Document     │  │ │  │   FAISS    │  │ │  │  3-Layer LLM     │  │
+│  │   Processor    │  │ │  │   Vector   │  │ │  │   Evaluator      │  │
+│  │                │  │ │  │   Store    │  │ │  │                  │  │
+│  │ • PDF Parser   │  │ │  │            │  │ │  │  Layer 1: Fast   │  │
+│  │ • DOCX Parser  │  │ │  │ • EN NCA   │  │ │  │  Layer 2: Detail │  │
+│  │ • TXT Parser   │  │ │  │ • AR NCA   │  │ │  │  Layer 3: Precise│  │
+│  │ • Chunking     │  │ │  │ • NIST CSF │  │ │  │                  │  │
+│  └────────────────┘  │ │  │ • Guidelines│ │ │  └──────────────────┘  │
+└──────────────────────┘ │  └────────────┘  │ └────────────────────────┘
+                         └──────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         EXTERNAL SERVICES                                    │
+│  ┌──────────────────────┐  ┌──────────────────────┐                         │
+│  │      Supabase        │  │      Groq API        │                         │
+│  │                      │  │                      │                         │
+│  │ • Authentication     │  │ • llama-3.1-8b       │                         │
+│  │ • PostgreSQL DB      │  │ • llama-3.1-70b      │                         │
+│  │ • Row Level Security │  │ • llama-3.3-70b      │                         │
+│  │ • User Profiles      │  │                      │                         │
+│  │ • Reports Storage    │  │                      │                         │
+│  └──────────────────────┘  └──────────────────────┘                         │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Component Details
+
+#### Frontend Architecture
+| Component | Description |
+|-----------|-------------|
+| **LandingPage (EN/AR)** | Bilingual landing pages with feature showcase |
+| **ComplianceChecker** | Document upload, framework selection, real-time analysis |
+| **PolicyTemplates** | Pre-built security policy templates |
+| **ImprovementAdvisor** | AI chatbot for compliance guidance |
+| **Dashboard** | Report management, statistics, comparisons |
+| **ProfilePage** | User settings, password change, data export |
+| **AuthContext** | Global authentication state management |
+| **LanguageContext** | i18n support with RTL handling |
+
+#### Backend Services
+| Service | Description |
+|---------|-------------|
+| **DocumentProcessor** | Extracts text from PDF/DOCX/TXT, chunks content |
+| **VectorStore** | FAISS-based semantic search across frameworks |
+| **Evaluator** | 3-layer LLM pipeline for compliance scoring |
+| **Chatbot** | Context-aware AI assistant with streaming responses |
+
+#### Data Flow
+```
+User Upload → Document Processing → Text Chunking → FAISS Retrieval
+     ↓                                                    ↓
+  Framework                                         Relevant Chunks
+  Selection                                               ↓
+     ↓                                            3-Layer Evaluation
+     └──────────────────→ Control Matching ←──────────────┘
+                               ↓
+                         Score & Analysis
+                               ↓
+                    ┌──────────┴──────────┐
+                    ▼                     ▼
+              Display Results      Save to Supabase
+```
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 18+
+- Groq API Key (get one at [console.groq.com](https://console.groq.com))
+
+### Installation
+
+1. **Clone and navigate to the project:**
+   ```bash
+   cd Final_Project
+   ```
+
+2. **Set up environment variables:**
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your GROQ_API_KEY
+   ```
+
+3. **Run the application:**
+   ```bash
+   chmod +x run.sh
+   ./run.sh
+   ```
+
+   Or run backend and frontend separately:
+   ```bash
+   # Terminal 1 - Backend
+   chmod +x run_backend.sh
+   ./run_backend.sh
+
+   # Terminal 2 - Frontend
+   chmod +x run_frontend.sh
+   ./run_frontend.sh
+   ```
+
+4. **Access the application:**
+   - Frontend: http://localhost:3000
+   - API Docs: http://localhost:8000/docs
+
+---
+
+## 📁 Project Structure
+
+```
+Final_Project/
+├── backend/
+│   ├── __init__.py           # Package initialization
+│   ├── config.py              # Configuration settings
+│   ├── main.py                # FastAPI application & endpoints
+│   ├── analyzer.py            # Main RAG orchestrator
+│   ├── evaluator.py           # Multi-layer LLM evaluator
+│   ├── chatbot.py             # AI chatbot with streaming
+│   ├── document_processor.py  # PDF/DOCX text extraction
+│   └── vector_store.py        # FAISS vector store manager
+│
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── logo.png           # Application logo
+│   │   └── templates/         # PDF policy templates
+│   └── src/
+│       ├── index.js           # React entry point
+│       ├── index.css          # Global styles
+│       ├── App.js             # Router & providers
+│       ├── config/
+│       │   └── supabase.js    # Supabase client config
+│       ├── context/
+│       │   ├── AuthContext.js     # Authentication state
+│       │   └── LanguageContext.js # i18n support
+│       ├── components/
+│       │   ├── Navbar.js          # Navigation bar
+│       │   └── ProtectedRoute.js  # Auth guard
+│       ├── services/
+│       │   └── reportService.js   # Report CRUD operations
+│       ├── pages/
+│       │   ├── LandingPageEN.js   # English landing
+│       │   ├── LandingPageAR.js   # Arabic landing
+│       │   ├── LoginPage.js       # Authentication
+│       │   ├── SignupPage.js      # Registration
+│       │   ├── ProfilePage.js     # User settings
+│       │   ├── DashboardPage.js   # Report management
+│       │   ├── ComplianceCheckerPageNew.js  # Main analyzer
+│       │   ├── PolicyTemplatesPage.js       # Templates
+│       │   ├── ImprovementAdvisorPage.js    # AI chatbot
+│       │   ├── ReportDetailPage.js  # Report details
+│       │   └── ComparePage.js       # Report comparison
+│       └── data/
+│           └── policyTemplates.js   # Template definitions
+│
+├── uploads/                   # Uploaded documents (auto-created)
+│
+├── chunks_en_nca.jsonl        # NCA English control chunks
+├── chunks_ar_nca.jsonl        # NCA Arabic control chunks
+├── chunks_en_nist.jsonl       # NIST control chunks
+├── chunks_en_guidelines.jsonl # General guidelines chunks
+├── embeddings_en_nca.npy     # NCA English embeddings
+├── embeddings_ar_nca.npy     # NCA Arabic embeddings
+├── embeddings_en_nist.npy    # NIST embeddings
+├── faiss_en_nca.index        # NCA English FAISS index
+├── faiss_ar_nca.index        # NCA Arabic FAISS index
+├── faiss_en_nist.index       # NIST FAISS index
+│
+├── requirements.txt          # Python dependencies
+├── .env.example              # Environment template
+├── run.sh                    # Full stack runner
+├── run_backend.sh            # Backend only runner
+├── run_frontend.sh           # Frontend only runner
+└── README.md
+```
+
+---
+
+## 🔌 API Endpoints
+
+### Document Management
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/upload` | Upload a compliance document |
+| DELETE | `/api/jobs/{job_id}` | Delete a job and its files |
+
+### Frameworks
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/frameworks` | List available frameworks |
+| GET | `/api/frameworks/{id}` | Get framework details |
+| GET | `/api/controls/{framework_id}` | Get all controls for a framework |
+
+### Evaluation
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/evaluate` | Start compliance evaluation |
+| GET | `/api/jobs/{job_id}` | Get job status and progress |
+| GET | `/api/results/{job_id}` | Get complete results |
+| GET | `/api/results/{job_id}/summary` | Get results summary |
+| GET | `/api/results/{job_id}/framework/{framework_id}` | Get framework-specific results |
+| GET | `/api/results/{job_id}/control/{framework_id}/{control_id}` | Get single control result |
+| POST | `/api/evaluate-single` | Evaluate single control |
+
+---
+
+## 🎯 How It Works
+
+### 1. Document Upload
+User uploads their company's compliance policy document (PDF, DOCX, or TXT).
+
+### 2. Text Extraction & Chunking
+The document is processed and split into manageable chunks for analysis.
+
+### 3. Multi-Layer LLM Evaluation
+For each control in the selected framework(s):
+
+**Layer 1 - Quick Relevance Check (Fast Model)**
+- Determines if the document addresses the control
+- Provides initial relevance score (0-100)
+
+**Layer 2 - Detailed Analysis (Balanced Model)**
+- Performs in-depth compliance analysis
+- Identifies specific gaps and strengths
+- Generates preliminary score
+
+**Layer 3 - Final Scoring (Precise Model)**
+- Synthesizes all layers' analyses
+- Produces final compliance score
+- Generates prioritized recommendations
+
+### 4. Results Presentation
+- Overall compliance score with breakdown by framework/domain
+- Interactive clickable controls showing detailed analysis
+- Color-coded scores (Green: Excellent, Blue: Good, Yellow: Fair, Orange: Poor, Red: Critical)
+- Actionable recommendations with priority levels
+
+---
+
+## 🔧 Configuration
+
+Edit `backend/config.py` to customize:
+
+```python
+# Groq Models (3-layer architecture)
+GROQ_MODELS = {
+    "fast": "llama-3.1-8b-instant",      # Layer 1
+    "balanced": "llama-3.1-70b-versatile", # Layer 2
+    "precise": "llama-3.3-70b-specdec"    # Layer 3
+}
+
+# RAG Configuration
+RAG_CONFIG = {
+    "top_k_retrieval": 5,
+    "similarity_threshold": 0.3,
+    "chunk_size": 1000,
+    "chunk_overlap": 200
+}
+
+# Scoring Configuration
+SCORING_CONFIG = {
+    "fully_compliant_threshold": 90,
+    "partially_compliant_threshold": 50,
+    "non_compliant_threshold": 25
+}
+```
+
+---
+
+## 📊 Scoring Interpretation
+
+| Score Range | Status | Color | Description |
+|-------------|--------|-------|-------------|
+| 90-100% | Excellent | 🟢 Green | Fully compliant, minor improvements possible |
+| 75-89% | Good | 🔵 Blue | Mostly compliant, some gaps to address |
+| 50-74% | Fair | 🟡 Yellow | Partially compliant, significant work needed |
+| 25-49% | Poor | 🟠 Orange | Largely non-compliant, major gaps |
+| 0-24% | Critical | 🔴 Red | Not compliant, requires immediate attention |
+
+---
+
+## 🛠️ Development
+
+### Backend Development
+```bash
+cd Final_Project
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn backend.main:app --reload
+```
+
+### Frontend Development
+```bash
+cd frontend
+npm install
+npm start
+```
+
+### Testing API
+```bash
+# Health check
+curl http://localhost:8000/
+
+# List frameworks
+curl http://localhost:8000/api/frameworks
+
+# Upload document
+curl -X POST -F "file=@policy.pdf" http://localhost:8000/api/upload
+```
+
+---
+
+## 📝 License
+
+This project is part of Tuwaiq Academy's final project requirements.
+
+---
+
+## �️ Database Schema (Supabase)
+
+```sql
+-- Users profiles (extends Supabase auth.users)
+CREATE TABLE profiles (
+  id UUID REFERENCES auth.users PRIMARY KEY,
+  full_name TEXT,
+  organization TEXT,
+  role TEXT DEFAULT 'user',
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Compliance reports
+CREATE TABLE compliance_reports (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES auth.users NOT NULL,
+  job_id TEXT,
+  filename TEXT,
+  overall_score DECIMAL,
+  total_controls_evaluated INTEGER,
+  frameworks TEXT[],
+  summary JSONB,
+  document_fingerprint TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Individual control results
+CREATE TABLE report_controls (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  report_id UUID REFERENCES compliance_reports ON DELETE CASCADE,
+  framework_id TEXT,
+  control_id TEXT,
+  control_text TEXT,
+  final_score DECIMAL,
+  compliance_status TEXT,
+  score_justification TEXT,
+  layer_scores JSONB,
+  recommendations TEXT[],
+  risk_level TEXT,
+  domain_name TEXT,
+  subdomain_name TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+---
+
+## 🔧 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 18, React Router, CSS3 |
+| **Backend** | Python 3.9+, FastAPI, Uvicorn |
+| **AI/ML** | Groq LLM API, FAISS, Sentence Transformers |
+| **Database** | Supabase (PostgreSQL), Row Level Security |
+| **Auth** | Supabase Auth (JWT) |
+| **File Processing** | PyPDF2, python-docx |
+| **Styling** | Custom CSS with animations, RTL support |
+
+---
+
+## �👥 Contributors
+
+- Abdullah - Tuwaiq Academy

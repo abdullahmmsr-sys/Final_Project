@@ -1,0 +1,57 @@
+.language-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.language-toggle:hover {
+  background: rgba(51, 65, 85, 0.95);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(139, 92, 246, 0.2);
+}
+
+.lang-option {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: all 0.3s ease;
+}
+
+.lang-option.active {
+  color: #a78bfa;
+}
+
+.lang-divider {
+  color: #475569;
+  font-weight: 300;
+}
+
+/* RTL Support */
+[dir="rtl"] .language-toggle {
+  right: auto;
+  left: 1.5rem;
+}
+
+/* Animation for toggle */
+@keyframes togglePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.language-toggle:active {
+  animation: togglePulse 0.2s ease;
+}
