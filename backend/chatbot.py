@@ -12,7 +12,10 @@ from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from backend.config import GROQ_API_KEY, DATA_DIR
+try:
+    from backend.config import GROQ_API_KEY, DATA_DIR
+except ImportError:
+    from config import GROQ_API_KEY, DATA_DIR
 
 
 class GuidelinesRAG:

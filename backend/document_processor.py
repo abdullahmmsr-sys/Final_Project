@@ -20,7 +20,10 @@ class DocumentProcessor:
     @staticmethod
     async def save_upload(file, filename: str) -> Path:
        
-        from backend.config import UPLOAD_DIR
+        try:
+            from backend.config import UPLOAD_DIR
+        except ImportError:
+            from config import UPLOAD_DIR
         
 
         UPLOAD_DIR.mkdir(parents=True, exist_ok=True)

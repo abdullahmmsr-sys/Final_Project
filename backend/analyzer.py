@@ -5,10 +5,16 @@ import asyncio
 from typing import List, Dict, Any, Optional
 from pathlib import Path
 
-from backend.vector_store import vector_store
-from backend.document_processor import document_processor
-from backend.evaluator import MultiLayerEvaluator
-from backend.config import GROQ_API_KEY, RAG_CONFIG
+try:
+    from backend.vector_store import vector_store
+    from backend.document_processor import document_processor
+    from backend.evaluator import MultiLayerEvaluator
+    from backend.config import GROQ_API_KEY, RAG_CONFIG
+except ImportError:
+    from vector_store import vector_store
+    from document_processor import document_processor
+    from evaluator import MultiLayerEvaluator
+    from config import GROQ_API_KEY, RAG_CONFIG
 
 
 class ComplianceAnalyzer:

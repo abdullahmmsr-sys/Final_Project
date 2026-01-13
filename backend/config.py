@@ -7,9 +7,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Detect if running in Docker (files are in /app) or locally (files are in parent directory)
+# In Docker: /app/config.py -> parent = /app, data files are in /app
+# Locally: backend/config.py -> parent = backend, data files are in parent (root)
+_current_dir = Path(__file__).parent
 
-BASE_DIR = Path(__file__).parent.parent
-DATA_DIR = BASE_DIR
+# Check if data files exist in current directory (Docker) or parent directory (local)
+if (_current_dir / "faiss_en_nca.index").exists():
+    # Running in Docker - data files are in same directory
+    BASE_DIR = _current_dir
+    DATA_DIR = _current_dir
+else:
+    # Running locally - data files are in parent directory
+    BASE_DIR = _current_dir.parent
+    DATA_DIR = BASE_DIR
+
 UPLOAD_DIR = BASE_DIR / "uploads"
 
 

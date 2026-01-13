@@ -7,7 +7,11 @@ import faiss
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from sentence_transformers import SentenceTransformer
-from backend.config import FAISS_INDEXES, CHUNKS_FILES, EMBEDDINGS_FILES, RAG_CONFIG
+
+try:
+    from backend.config import FAISS_INDEXES, CHUNKS_FILES, EMBEDDINGS_FILES, RAG_CONFIG
+except ImportError:
+    from config import FAISS_INDEXES, CHUNKS_FILES, EMBEDDINGS_FILES, RAG_CONFIG
 
 
 class VectorStoreManager:

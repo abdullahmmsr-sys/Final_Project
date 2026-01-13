@@ -9,7 +9,10 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import HumanMessage, SystemMessage
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from backend.config import GROQ_API_KEY, GROQ_MODELS, SCORING_CONFIG
+try:
+    from backend.config import GROQ_API_KEY, GROQ_MODELS, SCORING_CONFIG
+except ImportError:
+    from config import GROQ_API_KEY, GROQ_MODELS, SCORING_CONFIG
 
 
 class MultiLayerEvaluator:

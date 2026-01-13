@@ -3,6 +3,7 @@ Compliance Checker API - FastAPI Backend
 Multi-layer LLM-based compliance analysis for NCA and NIST frameworks
 """
 import os
+import sys
 import uuid
 import asyncio
 from datetime import datetime
@@ -14,11 +15,19 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from backend.config import UPLOAD_DIR, ALLOWED_EXTENSIONS
-from backend.document_processor import document_processor
-from backend.vector_store import vector_store
-from backend.analyzer import compliance_analyzer
-from backend.chatbot import compliance_chatbot
+# Handle imports for both local development and Docker deployment
+try:
+    from backend.config import UPLOAD_DIR, ALLOWED_EXTENSIONS
+    from backend.document_processor import document_processor
+    from backend.vector_store import vector_store
+    from backend.analyzer import compliance_analyzer
+    from backend.chatbot import compliance_chatbot
+except ImportError:
+    from config import UPLOAD_DIR, ALLOWED_EXTENSIONS
+    from document_processor import document_processor
+    from vector_store import vector_store
+    from analyzer import compliance_analyzer
+    from chatbot import compliance_chatbot
 
 
 # ============================================================================
