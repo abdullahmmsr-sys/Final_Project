@@ -11,8 +11,12 @@ langchain-community>=0.0.20
 
 # Vector Store & Embeddings
 faiss-cpu
-sentence-transformers>=2.3.0
 numpy>=1.24.0
+
+# CPU-only PyTorch (much smaller, no CUDA)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+sentence-transformers>=2.3.0
 
 # Document Processing
 pypdf>=4.0.0

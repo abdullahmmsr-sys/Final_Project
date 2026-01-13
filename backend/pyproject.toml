@@ -1,0 +1,8 @@
+[project]
+name = "compliance-backend"
+version = "1.0.0"
+requires-python = ">=3.11"
+
+[tool.railway]
+build-command = "pip install --no-cache-dir -r requirements.txt"
+start-command = "uvicorn main:app --host 0.0.0.0 --port $PORT"
