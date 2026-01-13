@@ -147,50 +147,6 @@ User Upload → Document Processing → Text Chunking → FAISS Retrieval
 
 ---
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.9+
-- Node.js 18+
-- Groq API Key (get one at [console.groq.com](https://console.groq.com))
-
-### Installation
-
-1. **Clone and navigate to the project:**
-   ```bash
-   cd Final_Project
-   ```
-
-2. **Set up environment variables:**
-   ```bash
-   cp .env.example .env
-   # Edit .env and add your GROQ_API_KEY
-   ```
-
-3. **Run the application:**
-   ```bash
-   chmod +x run.sh
-   ./run.sh
-   ```
-
-   Or run backend and frontend separately:
-   ```bash
-   # Terminal 1 - Backend
-   chmod +x run_backend.sh
-   ./run_backend.sh
-
-   # Terminal 2 - Frontend
-   chmod +x run_frontend.sh
-   ./run_frontend.sh
-   ```
-
-4. **Access the application:**
-   - Frontend: http://localhost:3000
-   - API Docs: http://localhost:8000/docs
-
----
-
 ## 📁 Project Structure
 
 ```
@@ -262,36 +218,6 @@ Final_Project/
 
 ---
 
-## 🔌 API Endpoints
-
-### Document Management
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/upload` | Upload a compliance document |
-| DELETE | `/api/jobs/{job_id}` | Delete a job and its files |
-
-### Frameworks
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/frameworks` | List available frameworks |
-| GET | `/api/frameworks/{id}` | Get framework details |
-| GET | `/api/controls/{framework_id}` | Get all controls for a framework |
-
-### Evaluation
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/evaluate` | Start compliance evaluation |
-| GET | `/api/jobs/{job_id}` | Get job status and progress |
-| GET | `/api/results/{job_id}` | Get complete results |
-| GET | `/api/results/{job_id}/summary` | Get results summary |
-| GET | `/api/results/{job_id}/framework/{framework_id}` | Get framework-specific results |
-| GET | `/api/results/{job_id}/control/{framework_id}/{control_id}` | Get single control result |
-| POST | `/api/evaluate-single` | Evaluate single control |
-
----
 
 ## 🎯 How It Works
 
@@ -326,35 +252,7 @@ For each control in the selected framework(s):
 
 ---
 
-## 🔧 Configuration
 
-Edit `backend/config.py` to customize:
-
-```python
-# Groq Models (3-layer architecture)
-GROQ_MODELS = {
-    "fast": "llama-3.1-8b-instant",      # Layer 1
-    "balanced": "llama-3.1-70b-versatile", # Layer 2
-    "precise": "llama-3.3-70b-specdec"    # Layer 3
-}
-
-# RAG Configuration
-RAG_CONFIG = {
-    "top_k_retrieval": 5,
-    "similarity_threshold": 0.3,
-    "chunk_size": 1000,
-    "chunk_overlap": 200
-}
-
-# Scoring Configuration
-SCORING_CONFIG = {
-    "fully_compliant_threshold": 90,
-    "partially_compliant_threshold": 50,
-    "non_compliant_threshold": 25
-}
-```
-
----
 
 ## 📊 Scoring Interpretation
 
@@ -368,36 +266,6 @@ SCORING_CONFIG = {
 
 ---
 
-## 🛠️ Development
-
-### Backend Development
-```bash
-cd Final_Project
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn backend.main:app --reload
-```
-
-### Frontend Development
-```bash
-cd frontend
-npm install
-npm start
-```
-
-### Testing API
-```bash
-# Health check
-curl http://localhost:8000/
-
-# List frameworks
-curl http://localhost:8000/api/frameworks
-
-# Upload document
-curl -X POST -F "file=@policy.pdf" http://localhost:8000/api/upload
-```
-
----
 
 ## 📝 License
 
@@ -405,53 +273,7 @@ This project is part of Tuwaiq Academy's final project requirements.
 
 ---
 
-## �️ Database Schema (Supabase)
 
-```sql
--- Users profiles (extends Supabase auth.users)
-CREATE TABLE profiles (
-  id UUID REFERENCES auth.users PRIMARY KEY,
-  full_name TEXT,
-  organization TEXT,
-  role TEXT DEFAULT 'user',
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Compliance reports
-CREATE TABLE compliance_reports (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  user_id UUID REFERENCES auth.users NOT NULL,
-  job_id TEXT,
-  filename TEXT,
-  overall_score DECIMAL,
-  total_controls_evaluated INTEGER,
-  frameworks TEXT[],
-  summary JSONB,
-  document_fingerprint TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Individual control results
-CREATE TABLE report_controls (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  report_id UUID REFERENCES compliance_reports ON DELETE CASCADE,
-  framework_id TEXT,
-  control_id TEXT,
-  control_text TEXT,
-  final_score DECIMAL,
-  compliance_status TEXT,
-  score_justification TEXT,
-  layer_scores JSONB,
-  recommendations TEXT[],
-  risk_level TEXT,
-  domain_name TEXT,
-  subdomain_name TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-```
-
----
 
 ## 🔧 Tech Stack
 
