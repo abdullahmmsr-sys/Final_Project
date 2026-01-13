@@ -160,7 +160,6 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="fullName">{t('fullName')}</label>
             <div className="input-wrapper">
-              <span className="input-icon"></span>
               <input
                 type="text"
                 id="fullName"
@@ -177,7 +176,6 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="email">{t('email')}</label>
             <div className="input-wrapper">
-              <span className="input-icon"></span>
               <input
                 type="email"
                 id="email"
@@ -194,7 +192,6 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="password">{t('password')}</label>
             <div className="input-wrapper">
-              <span className="input-icon"></span>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
