@@ -74,7 +74,7 @@ const LoginPage = () => {
       <div className="auth-card animate-fade-in-up">
         {/* Logo/Brand */}
         <div className="auth-header">
-          <div className="auth-logo">🛡️</div>
+          <div className="auth-logo"></div>
           <h1>{t('loginTitle')}</h1>
           <p>{t('loginSubtitle')}</p>
         </div>
@@ -92,7 +92,7 @@ const LoginPage = () => {
           <div className="form-group">
             <label htmlFor="email">{t('email')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">📧</span>
+              <span className="input-icon"></span>
               <input
                 type="email"
                 id="email"
@@ -109,7 +109,7 @@ const LoginPage = () => {
           <div className="form-group">
             <label htmlFor="password">{t('password')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
+              <span className="input-icon"></span>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
@@ -165,7 +165,7 @@ const LoginPage = () => {
         {/* Social Login Options (can be enabled later) */}
         <div className="social-login">
           <button className="btn btn-social google" disabled>
-            <span>🔵</span> {isRTL ? 'المتابعة مع Google' : 'Continue with Google'}
+            <span></span> {isRTL ? 'المتابعة مع Google' : 'Continue with Google'}
           </button>
         </div>
 

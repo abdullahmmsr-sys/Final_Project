@@ -142,7 +142,7 @@ const SignupPage = () => {
       <div className="auth-card animate-fade-in-up">
         {/* Logo/Brand */}
         <div className="auth-header">
-          <div className="auth-logo">🛡️</div>
+          <div className="auth-logo"></div>
           <h1>{t('signupTitle')}</h1>
           <p>{t('signupSubtitle')}</p>
         </div>
@@ -160,7 +160,7 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="fullName">{t('fullName')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">👤</span>
+              <span className="input-icon"></span>
               <input
                 type="text"
                 id="fullName"
@@ -177,7 +177,7 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="email">{t('email')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">📧</span>
+              <span className="input-icon"></span>
               <input
                 type="email"
                 id="email"
@@ -194,7 +194,7 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="password">{t('password')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
+              <span className="input-icon"></span>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="password"
@@ -218,7 +218,7 @@ const SignupPage = () => {
           <div className="form-group">
             <label htmlFor="confirmPassword">{t('confirmPassword')}</label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
+              <span className="input-icon"></span>
               <input
                 type={showPassword ? 'text' : 'password'}
                 id="confirmPassword"
