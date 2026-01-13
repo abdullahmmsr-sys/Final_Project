@@ -5,7 +5,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../translations';
 import LanguageToggle from '../components/LanguageToggle';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
 
 // Utility function to get score color class
 const getScoreClass = (score) => {
