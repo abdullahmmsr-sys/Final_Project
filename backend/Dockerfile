@@ -22,5 +22,5 @@ COPY . .
 # Expose port
 EXPOSE 8080
 
-# Run the application - use shell form to expand $PORT variable
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
+# Run the application - use explicit shell for variable expansion
+CMD ["/bin/sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
