@@ -31,6 +31,11 @@ class VectorStoreManager:
         
         print("Loading FAISS indexes and chunks...")
         
+        # Pre-load embedding model at startup (no lazy loading)
+        print("Loading BGE-M3 embedding model...")
+        self.embedding_model = SentenceTransformer('BAAI/bge-m3')
+        print("✓ Embedding model loaded!")
+        
         for framework, index_path in FAISS_INDEXES.items():
             if Path(index_path).exists():
                 print(f"Loading {framework} index...")
@@ -54,12 +59,13 @@ class VectorStoreManager:
         self._loaded = True
         print(f"Loaded {len(self.indexes)} vector stores")
     
-    def _load_embedding_model(self):
-        """Lazy load the embedding model only when needed"""
+    def _get_embedding_model(self):
+        """Get the pre-loaded embedding model"""
         if self.embedding_model is None:
-            print("Loading embedding model (this may take a moment)...")
+            # Fallback: load if not already loaded
+            print("Loading embedding model...")
             self.embedding_model = SentenceTransformer('BAAI/bge-m3')
-            print("Embedding model loaded!")
+            print("✓ Embedding model loaded!")
         return self.embedding_model
     
     def _load_chunks(self, path: Path) -> List[Dict]:
@@ -102,8 +108,8 @@ class VectorStoreManager:
         
         top_k = top_k or RAG_CONFIG["top_k"]
         
-        # Encode query - use lazy loaded embedding model
-        model = self._load_embedding_model()
+        # Encode query - use pre-loaded embedding model
+        model = self._get_embedding_model()
         query_embedding = model.encode([query], convert_to_numpy=True)
         
         # Search FAISS index

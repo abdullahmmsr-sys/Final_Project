@@ -21,11 +21,11 @@ except ImportError:
 class GuidelinesRAG:
     """RAG system for retrieving implementation guidelines"""
     
-    def __init__(self):
+    def __init__(self, shared_embedding_model=None):
         self.index = None
         self.chunks = []
         self.embeddings = None
-        self.embedding_model = None
+        self.embedding_model = shared_embedding_model  # Use shared model if provided
         self._loaded = False
         
         # Paths for guidelines
@@ -33,13 +33,18 @@ class GuidelinesRAG:
         self.chunks_path = DATA_DIR / "chunks_en_guidelines.jsonl"
         self.embeddings_path = DATA_DIR / "embeddings_en_guidelines.npy"
     
-    def load(self):
+    def load(self, shared_embedding_model=None):
         """Load the guidelines FAISS index and chunks"""
         if self._loaded:
             return
         
-        print("Loading guidelines embedding model...")
-        self.embedding_model = SentenceTransformer('BAAI/bge-m3')
+        # Use shared model if provided, otherwise load our own
+        if shared_embedding_model:
+            self.embedding_model = shared_embedding_model
+            print("Using shared embedding model for guidelines...")
+        elif self.embedding_model is None:
+            print("Loading guidelines embedding model...")
+            self.embedding_model = SentenceTransformer('BAAI/bge-m3')
         
         # Load FAISS index
         if self.index_path.exists():

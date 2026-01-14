@@ -138,12 +138,23 @@ async def startup_event():
     # Ensure upload directory exists
     Path(UPLOAD_DIR).mkdir(parents=True, exist_ok=True)
     
-    # Initialize vector stores
+    # Initialize vector stores (this also loads the embedding model)
     try:
         vector_store.load_all()
         print(f"Loaded frameworks: {list(vector_store.indexes.keys())}")
     except Exception as e:
         print(f"Warning: Could not load vector stores: {e}")
+    
+    # Pre-load chatbot guidelines using shared embedding model
+    try:
+        print("Pre-loading chatbot guidelines...")
+        compliance_chatbot.guidelines_rag.load(
+            shared_embedding_model=vector_store.embedding_model
+        )
+        compliance_chatbot._init_llm()
+        print("✓ Chatbot ready!")
+    except Exception as e:
+        print(f"Warning: Could not pre-load chatbot: {e}")
     
     # Report loaded jobs
     loaded_jobs = job_storage.get_all()
