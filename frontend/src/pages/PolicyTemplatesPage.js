@@ -79,7 +79,7 @@ const PolicyTemplatesPage = () => {
       {/* Search and Filter Bar */}
       <div className="filter-bar">
         <div className="search-box">
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"></span>
           <input
             type="text"
             placeholder={t('searchTemplates')}
@@ -239,7 +239,7 @@ const PolicyTemplatesPage = () => {
                 className="btn-primary"
                 onClick={() => handleDownload(selectedTemplate)}
               >
-                📥 {t('download')}
+                 {t('download')}
               </button>
             </div>
           </div>
