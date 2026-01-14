@@ -1,4 +1,4 @@
-# 🛡️ Compliance Checker
+#  Compliance Checker
 
 <p align="center">
   <img src="frontend/public/logo.png" alt="Compliance Checker Logo" width="200"/>
@@ -291,4 +291,4 @@ This project is part of Tuwaiq Academy's final project requirements.
 
 ## �👥 Contributors
 
-- Abdullah - Tuwaiq Academy
+- Abdullah - Turki - Manar - Abeer - Tuwaiq Academy
