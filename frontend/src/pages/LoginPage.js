@@ -156,12 +156,12 @@ const LoginPage = () => {
         </form>
 
         {/* Divider */}
-        <div className="auth-divider">
+        {/* <div className="auth-divider">
           <span>{t('or')}</span>
-        </div>
+        </div> */}
 
-        {/* Social Login Options (can be enabled later) */}
-        <div className="social-login">
+        {/* Social Login Options (disabled) */}
+        {/* <div className="social-login">
           <button 
             className="btn btn-social google" 
             onClick={signInWithGoogle}
@@ -175,7 +175,7 @@ const LoginPage = () => {
             </svg>
             {isRTL ? 'المتابعة مع Google' : 'Continue with Google'}
           </button>
-        </div>
+        </div> */
 
         {/* Sign Up Link */}
         <div className="auth-footer">

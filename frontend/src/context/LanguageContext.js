@@ -14,7 +14,7 @@ export const translations = {
     home: 'Home',
     
     // Landing page
-    badge: '🔒 AI-Powered Compliance',
+    badge: 'AI-Powered Compliance',
     heroTitle1: 'Cybersecurity',
     heroTitle2: 'Compliance Platform',
     heroSubtitle: 'Automate your compliance checks with AI-powered analysis. Get detailed scores, recommendations, and improvement plans for NCA, NIST, and more.',
@@ -206,7 +206,7 @@ export const translations = {
     home: 'الرئيسية',
     
     // Landing page
-    badge: '🔒 امتثال مدعوم بالذكاء الاصطناعي',
+    badge: 'امتثال مدعوم بالذكاء الاصطناعي',
     heroTitle1: 'منصة امتثال',
     heroTitle2: 'الأمن السيبراني',
     heroSubtitle: 'قم بأتمتة فحوصات الامتثال الخاصة بك باستخدام التحليل المدعوم بالذكاء الاصطناعي. احصل على درجات مفصلة وتوصيات وخطط تحسين للهيئة الوطنية للأمن السيبراني و NIST والمزيد.',
