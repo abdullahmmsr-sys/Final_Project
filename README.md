@@ -35,6 +35,7 @@ A sophisticated RAG (Retrieval-Augmented Generation) based compliance checking s
 - **Bilingual Support**: Full Arabic and English interface with RTL support
 - **User Authentication**: Secure login/signup with Supabase
 - **Report Management**: Save, view, compare, and export compliance reports
+- **Persistent Report Storage**: Reports survive server restarts and persist indefinitely
 - **AI Chatbot**: Interactive improvement advisor for compliance guidance
 - **Policy Templates**: Ready-to-use security policy templates
 - **Actionable Recommendations**: Priority-ranked suggestions for improvement

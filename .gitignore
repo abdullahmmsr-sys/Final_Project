@@ -218,6 +218,10 @@ frontend/node_modules/
 # Uploads folder (user uploaded files)
 uploads/
 
+# Job storage (persistent report data)
+job_data/
+backend/job_data/
+
 # Large binary files in root (not needed in repo)
 # But allow them in backend/ for Railway deployment
 /*.npy

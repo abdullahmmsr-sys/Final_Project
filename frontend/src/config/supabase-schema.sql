@@ -139,3 +139,40 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER update_profiles_updated_at
   BEFORE UPDATE ON profiles
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- ============================================================================
+-- Backend Jobs table (for persistent job storage from Railway backend)
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS backend_jobs (
+  job_id TEXT PRIMARY KEY,
+  status TEXT NOT NULL DEFAULT 'uploaded',
+  filename TEXT,
+  file_path TEXT,
+  char_count INTEGER,
+  word_count INTEGER,
+  frameworks TEXT[],
+  progress JSONB,
+  results JSONB,
+  error TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  started_at TIMESTAMP WITH TIME ZONE,
+  completed_at TIMESTAMP WITH TIME ZONE,
+  failed_at TIMESTAMP WITH TIME ZONE,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Index for faster lookups
+CREATE INDEX IF NOT EXISTS idx_backend_jobs_status ON backend_jobs(status);
+CREATE INDEX IF NOT EXISTS idx_backend_jobs_created ON backend_jobs(created_at);
+
+-- Allow public access for backend service key
+ALTER TABLE backend_jobs ENABLE ROW LEVEL SECURITY;
+
+-- Policy to allow all operations (backend uses service key which bypasses RLS)
+CREATE POLICY "Allow all operations on backend_jobs" ON backend_jobs
+  FOR ALL USING (true) WITH CHECK (true);
+
+-- Trigger for updating backend_jobs updated_at
+CREATE TRIGGER update_backend_jobs_updated_at
+  BEFORE UPDATE ON backend_jobs
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();

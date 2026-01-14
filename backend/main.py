@@ -22,12 +22,14 @@ try:
     from backend.vector_store import vector_store
     from backend.analyzer import compliance_analyzer
     from backend.chatbot import compliance_chatbot
+    from backend.job_storage import persistent_storage
 except ImportError:
     from config import UPLOAD_DIR, ALLOWED_EXTENSIONS
     from document_processor import document_processor
     from vector_store import vector_store
     from analyzer import compliance_analyzer
     from chatbot import compliance_chatbot
+    from job_storage import persistent_storage
 
 
 # ============================================================================
@@ -117,9 +119,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# In-memory storage for job status and results
-# In production, use Redis or a database
-job_storage: Dict[str, Dict[str, Any]] = {}
+# Persistent storage for job status and results
+# Automatically saves to disk and loads on startup
+job_storage = persistent_storage
 
 
 # ============================================================================
@@ -142,6 +144,13 @@ async def startup_event():
         print(f"Loaded frameworks: {list(vector_store.indexes.keys())}")
     except Exception as e:
         print(f"Warning: Could not load vector stores: {e}")
+    
+    # Report loaded jobs
+    loaded_jobs = job_storage.get_all()
+    if loaded_jobs:
+        print(f"✓ Restored {len(loaded_jobs)} existing report(s) from disk")
+        # Clean up old jobs (older than 30 days)
+        job_storage.cleanup_old_jobs(days=30)
     
     print("API ready!")
     print("=" * 60)
@@ -358,9 +367,11 @@ async def start_evaluation(
             )
     
     # Update job status
-    job["status"] = "processing"
-    job["frameworks"] = request.frameworks
-    job["started_at"] = datetime.utcnow().isoformat()
+    job_storage.update(job_id, {
+        "status": "processing",
+        "frameworks": request.frameworks,
+        "started_at": datetime.utcnow().isoformat()
+    })
     
     # Start background evaluation
     background_tasks.add_task(
@@ -391,13 +402,16 @@ async def run_evaluation(
         return
     
     def progress_callback(framework, current, total, control_id):
-        job["progress"] = {
-            "framework": framework,
-            "current_control": current,
-            "total_controls": total,
-            "control_id": control_id,
-            "percentage": round((current / total) * 100, 1)
-        }
+        # Update progress in storage
+        job_storage.update(job_id, {
+            "progress": {
+                "framework": framework,
+                "current_control": current,
+                "total_controls": total,
+                "control_id": control_id,
+                "percentage": round((current / total) * 100, 1)
+            }
+        })
     
     try:
         results = await compliance_analyzer.analyze_document(
@@ -407,14 +421,20 @@ async def run_evaluation(
             progress_callback=progress_callback
         )
         
-        job["status"] = "completed"
-        job["completed_at"] = datetime.utcnow().isoformat()
-        job["results"] = results
+        # Update job with results
+        job_storage.update(job_id, {
+            "status": "completed",
+            "completed_at": datetime.utcnow().isoformat(),
+            "results": results
+        })
         
     except Exception as e:
-        job["status"] = "failed"
-        job["error"] = str(e)
-        job["failed_at"] = datetime.utcnow().isoformat()
+        # Update job with error
+        job_storage.update(job_id, {
+            "status": "failed",
+            "error": str(e),
+            "failed_at": datetime.utcnow().isoformat()
+        })
 
 
 @app.get("/api/jobs/{job_id}")
@@ -836,6 +856,60 @@ async def get_report_for_chatbot(job_id: str):
             "poor": poor[:10],
             "all": all_controls
         }
+    }
+
+
+# ============================================================================
+# Admin/Management Endpoints
+# ============================================================================
+
+@app.get("/api/admin/jobs")
+async def list_all_jobs():
+    """
+    List all stored jobs (admin endpoint)
+    Returns basic info about all jobs in storage
+    """
+    all_jobs = job_storage.get_all()
+    
+    job_list = []
+    for job_id, job_data in all_jobs.items():
+        job_list.append({
+            "job_id": job_id,
+            "filename": job_data.get("filename"),
+            "status": job_data.get("status"),
+            "created_at": job_data.get("created_at"),
+            "completed_at": job_data.get("completed_at"),
+            "has_results": job_data.get("results") is not None
+        })
+    
+    # Sort by creation date (newest first)
+    job_list.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+    
+    return {
+        "total_jobs": len(job_list),
+        "jobs": job_list
+    }
+
+
+@app.post("/api/admin/cleanup")
+async def cleanup_old_jobs(days: int = 30):
+    """
+    Clean up jobs older than specified days (admin endpoint)
+    
+    Default: 30 days
+    """
+    if days < 1:
+        raise HTTPException(
+            status_code=400,
+            detail="Days must be at least 1"
+        )
+    
+    deleted_count = job_storage.cleanup_old_jobs(days=days)
+    
+    return {
+        "message": f"Cleanup complete",
+        "deleted_jobs": deleted_count,
+        "days_threshold": days
     }
 
 

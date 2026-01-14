@@ -24,6 +24,9 @@ else:
 
 UPLOAD_DIR = BASE_DIR / "uploads"
 
+# Supabase Configuration (for persistent job storage)
+SUPABASE_URL = os.getenv("SUPABASE_URL", "")
+SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY", "")  # Use service key for backend
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 
